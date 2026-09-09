@@ -1,0 +1,230 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #f4f7f5;
+  color: #1f2937;
+}
+
+.app {
+  min-height: 100vh;
+}
+
+.header {
+  background: #14532d;
+  color: white;
+  padding: 20px 6%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header h1 {
+  margin: 0;
+  font-size: 25px;
+}
+
+.header p {
+  margin: 5px 0 0;
+  opacity: 0.85;
+}
+
+.report-button,
+.main-report-button,
+.submit-button {
+  border: none;
+  border-radius: 7px;
+  padding: 12px 20px;
+  font-size: 15px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.report-button {
+  background: white;
+  color: #14532d;
+}
+
+main {
+  max-width: 1200px;
+  margin: auto;
+}
+
+.hero {
+  text-align: center;
+  padding: 70px 20px;
+  background: white;
+}
+
+.hero h2 {
+  font-size: 36px;
+  margin-bottom: 15px;
+}
+
+.hero p {
+  max-width: 700px;
+  margin: 0 auto 25px;
+  line-height: 1.7;
+  color: #4b5563;
+}
+
+.main-report-button {
+  background: #dc2626;
+  color: white;
+}
+
+.wards {
+  padding: 45px 25px;
+}
+
+.wards h2,
+.incidents h2 {
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+.ward-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 15px;
+}
+
+.ward-card {
+  background: white;
+  padding: 22px;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.ward-card strong {
+  display: block;
+  font-size: 18px;
+  margin-bottom: 8px;
+}
+
+.ward-card span {
+  color: #6b7280;
+}
+
+.incidents {
+  padding: 20px 25px 60px;
+}
+
+.empty-message {
+  background: white;
+  padding: 30px;
+  text-align: center;
+  border-radius: 10px;
+  color: #6b7280;
+}
+
+.modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  overflow-y: auto;
+}
+
+.form-box {
+  background: white;
+  width: 100%;
+  max-width: 600px;
+  padding: 30px;
+  border-radius: 12px;
+  position: relative;
+}
+
+.form-box h2 {
+  margin-top: 0;
+  color: #14532d;
+}
+
+.form-box label {
+  display: block;
+  margin-top: 15px;
+  margin-bottom: 6px;
+  font-weight: bold;
+}
+
+.form-box input,
+.form-box select,
+.form-box textarea {
+  width: 100%;
+  padding: 11px;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  font-size: 15px;
+}
+
+.form-box textarea {
+  resize: vertical;
+}
+
+.submit-button {
+  width: 100%;
+  margin-top: 25px;
+  background: #14532d;
+  color: white;
+}
+
+.close-button {
+  position: absolute;
+  right: 15px;
+  top: 10px;
+  border: none;
+  background: transparent;
+  font-size: 30px;
+  cursor: pointer;
+  color: #555;
+}
+.map-section {
+  padding: 20px 25px 40px;
+  background: white;
+  margin-top: 20px;
+}
+
+.map-section h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+.status-badge {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: bold;
+  margin-left: 5px;
+}
+
+.status-new {
+  background: #fff3cd;
+  color: #856404;
+}
+
+.status-verified {
+  background: #cfe2ff;
+  color: #084298;
+}
+
+.status-assigned {
+  background: #e2d9f3;
+  color: #59359a;
+}
+
+.status-in-progress {
+  background: #ffe5d0;
+  color: #984c0c;
+}
+
+.status-resolved {
+  background: #d1e7dd;
+  color: #0f5132;
+}
