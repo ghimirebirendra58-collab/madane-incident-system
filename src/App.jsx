@@ -67,12 +67,8 @@ setAssignments(assignmentData || [])
 console.log('ASSIGNMENTS FROM DATABASE:', assignmentData)
 }
 
-      setAssignments(assignmentData || [])
-      console.log('ASSIGNMENTS FROM DATABASE:', assignmentData)
-    }
-
     fetchIncidents()
-  }, [])
+ }, [])
 
  const handleChange = (e) => {
   setForm({
