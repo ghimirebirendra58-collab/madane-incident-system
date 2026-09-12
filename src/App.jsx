@@ -13,6 +13,7 @@ function App() {
   const [showForm, setShowForm] = useState(false)
   const [message, setMessage] = useState('')
   const [incidents, setIncidents] = useState([])
+  const [assignments, setAssignments] = useState([])
   const [locationStatus, setLocationStatus] = useState('')
 const [coordinates, setCoordinates] = useState({
   latitude: null,
@@ -45,6 +46,29 @@ const [coordinates, setCoordinates] = useState({
 
       setIncidents(data)
       console.log('INCIDENTS FROM DATABASE:', data)
+        console.log('STARTING ASSIGNMENT QUERY')
+
+console.log("STARTING ASSIGNMENT QUERY");
+        const { data: assignmentData, error: assignmentError } = await supabase
+  .from('public_incident_assignments')
+  .select('*')
+  .order('created_at', { ascending: true })
+
+console.log('ASSIGNMENT QUERY FINISHED')
+console.log('ASSIGNMENT DATA:', assignmentData)
+console.log('ASSIGNMENT ERROR:', assignmentError)
+
+if (assignmentError) {
+  console.error('ASSIGNMENT FETCH ERROR:', assignmentError)
+  return
+}
+
+setAssignments(assignmentData || [])
+console.log('ASSIGNMENTS FROM DATABASE:', assignmentData)
+}
+
+      setAssignments(assignmentData || [])
+      console.log('ASSIGNMENTS FROM DATABASE:', assignmentData)
     }
 
     fetchIncidents()
@@ -208,24 +232,42 @@ longitude: coordinates.longitude
                     <strong>Description:</strong> {incident.description}
                   </p>
 
-                 <p>
+                <p>
   <strong>Status:</strong>{' '}
   <span
-  style={{
-    display: 'inline-block',
-    padding: '4px 10px',
-    borderRadius: '12px',
-    fontSize: '12px',
-    fontWeight: 'bold',
-    background: '#fff3cd',
-    color: '#856404',
-    marginLeft: '5px'
-  }}
->
-  {incident.status || 'NEW'}
-</span>
+    style={{
+      display: 'inline-block',
+      padding: '4px 10px',
+      borderRadius: '12px',
+      fontSize: '12px',
+      fontWeight: 'bold',
+      background: '#fff3cd',
+      color: '#856404',
+      marginLeft: '5px'
+    }}
+  >
+    {incident.status || 'NEW'}
+  </span>
 </p>
-                  <p>
+
+{/* ADD THIS PART HERE */}
+<p>
+  <strong>Forwarded to:</strong>{' '}
+  {assignments.filter(
+    (assignment) =>
+      String(assignment.incident_id) === String(incident.id)
+  ).length > 0
+    ? assignments
+        .filter(
+          (assignment) =>
+            String(assignment.incident_id) === String(incident.id)
+        )
+        .map((assignment) => assignment.assigned_to)
+        .join(', ')
+    : 'Not yet forwarded'}
+</p>
+
+<p>
   <strong>Reported:</strong>{' '}
   {new Date(incident.created_at).toLocaleString()}
 </p>
